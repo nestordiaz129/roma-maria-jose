@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4eee5" />
+  <title>Roma · María José & Néstor</title>
+  <style>
+    :root{
+      --paper:#f6f0e7; --paper2:#fffaf3; --ink:#262321; --muted:#70665f; --wine:#9e3f39;
+      --gold:#b78a52; --line:#d8c6b1; --shadow:0 18px 60px rgba(54,42,31,.16);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#f8f3eb,#efe6da);color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#7d6d5e 0.55px,transparent 0.55px);background-size:7px 7px;mix-blend-mode:multiply}
+    .hero{min-height:100svh;display:grid;place-items:center;padding:20px;position:relative}
+    .hero-card{width:min(96vw,760px);aspect-ratio:1050/1536;border-radius:4px;overflow:hidden;box-shadow:var(--shadow);background:#fff;position:relative}
+    .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .scroll-hint{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);background:rgba(255,250,243,.9);border:1px solid rgba(158,63,57,.25);backdrop-filter:blur(10px);padding:10px 15px;border-radius:999px;color:var(--wine);font:600 13px/1.1 system-ui,sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.10)}
+    main{width:min(100%,1040px);margin:auto;padding:30px 18px 90px}
+    .intro{text-align:center;max-width:780px;margin:22px auto 58px;padding:0 10px}
+    .eyebrow{font:700 12px/1 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--wine)}
+    h1,h2,h3{font-weight:400;margin:0}
+    .intro h1{font-size:clamp(38px,7vw,72px);font-style:italic;margin:10px 0 14px}
+    .intro p{font-size:clamp(17px,2.4vw,21px);line-height:1.65;color:var(--muted);margin:0}
+    .timeline{position:relative;display:grid;gap:36px}
+    .timeline::before{content:"";position:absolute;top:10px;bottom:10px;left:29px;width:1px;background:linear-gradient(var(--line),var(--wine),var(--line));opacity:.65}
+    .day{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start;position:relative}
+    .date-badge{width:58px;height:58px;border-radius:50%;background:var(--paper2);border:1px solid var(--line);display:grid;place-items:center;text-align:center;box-shadow:0 8px 28px rgba(57,42,29,.12);z-index:2}
+    .date-badge b{display:block;font:800 19px/1 system-ui,sans-serif;color:var(--wine)}
+    .date-badge span{display:block;font:700 9px/1.2 system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+    .card{background:rgba(255,250,243,.86);border:1px solid rgba(183,138,82,.30);border-radius:20px;padding:24px 22px;box-shadow:0 12px 40px rgba(66,49,34,.10);backdrop-filter:blur(7px)}
+    .card-head{display:flex;gap:14px;justify-content:space-between;align-items:flex-start;padding-bottom:15px;border-bottom:1px dashed var(--line)}
+    .card h2{font-size:clamp(28px,4.6vw,42px);font-style:italic;line-height:1}
+    .subtitle{font:600 13px/1.3 system-ui,sans-serif;color:var(--wine);margin-top:7px}
+    .day-icon{font-size:29px;filter:saturate(.8)}
+    .blocks{display:grid;gap:16px;margin-top:18px}
+    .block{display:grid;grid-template-columns:88px 1fr;gap:16px;align-items:start}
+    .part{font:800 11px/1.2 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.13em;color:var(--wine);padding-top:5px}
+    .items{display:grid;gap:10px}
+    .item{display:grid;grid-template-columns:72px 1fr;gap:11px;align-items:start}
+    .time{font:700 13px/1.5 system-ui,sans-serif;color:#4f4842;white-space:nowrap}
+    .desc{font-size:17px;line-height:1.48}
+    .desc strong{color:#2c2724}
+    .note{margin-top:17px;padding:13px 15px;border-left:3px solid var(--gold);background:#f3e8da;border-radius:0 12px 12px 0;font:500 14px/1.55 system-ui,sans-serif;color:#554b42}
+    .romantic{margin:60px auto 0;max-width:850px;background:linear-gradient(145deg,#7f302d,#a84b43);color:#fff8f2;border-radius:26px;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .romantic::after{content:"♡";position:absolute;right:-12px;bottom:-60px;font-size:220px;opacity:.08;transform:rotate(-12deg)}
+    .romantic h2{font-size:clamp(30px,5vw,50px);font-style:italic;margin-bottom:13px}
+    .romantic p{font:400 16px/1.7 system-ui,sans-serif;max-width:680px;margin:0 0 18px;color:#f7e9df}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;position:relative;z-index:1}
+    .chip{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.09);border-radius:999px;padding:8px 12px;font:600 12px/1 system-ui,sans-serif}
+    footer{text-align:center;padding:64px 20px 32px;color:var(--muted)}
+    footer .love{font-size:34px;font-style:italic;color:var(--wine);margin-bottom:8px}
+    footer small{font:600 11px/1.5 system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.reveal.on{opacity:1;transform:none}
+    @media (max-width:620px){
+      .hero{padding:0;align-items:start}.hero-card{width:100vw;border-radius:0;box-shadow:none;aspect-ratio:1050/1536}.scroll-hint{bottom:10px}
+      main{padding-inline:12px}.timeline::before{left:23px}.day{grid-template-columns:48px 1fr;gap:10px}.date-badge{width:46px;height:46px}.date-badge b{font-size:16px}.date-badge span{font-size:7px}
+      .card{padding:20px 16px;border-radius:16px}.block{grid-template-columns:1fr;gap:7px}.part{padding-top:0}.item{grid-template-columns:64px 1fr;gap:8px}.desc{font-size:15.7px}.romantic{padding:28px 22px;border-radius:20px}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" aria-label="Portada del viaje">
+    <div class="hero-card"><img src="assets/portada.png" alt="Invitación ilustrada del viaje romántico a Roma" /></div>
+    <a class="scroll-hint" href="#itinerario">Descubrir el viaje ↓</a>
+  </section>
+
+  <main id="itinerario">
+    <section class="intro reveal">
+      <div class="eyebrow">6 — 10 noviembre · Roma</div>
+      <h1>Nuestro pequeño plan romano</h1>
+      <p>Cuatro días para perdernos entre plazas, ruinas, cúpulas, pasta y paseos sin prisa. Este es el plan; lo único obligatorio es disfrutarlo juntos.</p>
+    </section>
+
+    <div class="timeline">
+      <article class="day reveal">
+        <div class="date-badge"><div><b>06</b><span>vie</span></div></div>
+        <div class="card">
+          <div class="card-head"><div><h2>Llegada</h2><div class="subtitle">Madrid → Roma · primera noche</div></div><div class="day-icon">✈️</div></div>
+          <div class="blocks">
+            <div class="block"><div class="part">Noche</div><div class="items">
+              <div class="item"><div class="time">21:55</div><div class="desc">Vuelo desde <strong>Madrid</strong>.</div></div>
+              <div class="item"><div class="time">00:20</div><div class="desc">Llegada a <strong>Roma Fiumicino</strong>.</div></div>
+              <div class="item"><div class="time">≈ 01:00</div><div class="desc">Taxi oficial hasta el <strong>Hotel Accademia</strong>, junto a la Fontana di Trevi. La tarifa fija Fiumicino ↔ centro dentro de las Murallas Aurelianas es de <strong>55 €</strong>.</div></div>
+              <div class="item"><div class="time">Después</div><div class="desc">Check-in y a dormir. Roma empieza de verdad mañana.</div></div>
+            </div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day reveal">
+        <div class="date-badge"><div><b>07</b><span>sáb</span></div></div>
+        <div class="card">
+          <div class="card-head"><div><h2>Centro histórico</h2><div class="subtitle">Plazas, fuentes y paseo sin mapa</div></div><div class="day-icon">⛲</div></div>
+          <div class="blocks">
+            <div class="block"><div class="part">Mañana</div><div class="items">
+              <div class="item"><div class="time">08:15</div><div class="desc"><strong>Fontana di Trevi casi a solas</strong>. Está al lado del hotel y a primera hora se disfruta muchísimo más.</div></div>
+              <div class="item"><div class="time">09:15</div><div class="desc">Paseo hacia <strong>Piazza di Spagna</strong> (~10 min).</div></div>
+              <div class="item"><div class="time">10:00–12:00</div><div class="desc"><strong>Free Tour</strong>: Piazza di Spagna → Piazza Navona.</div></div>
+              <div class="item"><div class="time">12:10–12:55</div><div class="desc"><strong>Panteón</strong>. Mejor reservar margen para entrada y visita; el acceso turístico es con ticket.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">13:10–14:30</div><div class="desc">Comida por <strong>Navona / Panteón</strong> o acercándonos a Campo de’ Fiori.</div></div></div></div>
+            <div class="block"><div class="part">Tarde</div><div class="items">
+              <div class="item"><div class="time">15:00</div><div class="desc"><strong>Campo de’ Fiori</strong> y paseo por las callejuelas del centro.</div></div>
+              <div class="item"><div class="time">16:00</div><div class="desc">Regreso sin prisa por <strong>Via del Corso</strong>, tiendas y desvíos espontáneos.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Noche</div><div class="items"><div class="item"><div class="time">Libre</div><div class="desc">Cena cerca del hotel y <strong>Trevi iluminada</strong> antes de volver a la habitación.</div></div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day reveal">
+        <div class="date-badge"><div><b>08</b><span>dom</span></div></div>
+        <div class="card">
+          <div class="card-head"><div><h2>Roma antigua</h2><div class="subtitle">Coliseo, Foro y el mejor atardecer</div></div><div class="day-icon">🏛️</div></div>
+          <div class="blocks">
+            <div class="block"><div class="part">Mañana</div><div class="items">
+              <div class="item"><div class="time">08:20</div><div class="desc">Salida hacia el <strong>Coliseo</strong> (~25–30 min andando).</div></div>
+              <div class="item"><div class="time">09:00–10:30</div><div class="desc"><strong>Coliseo · Full Experience Subterráneos y Arena</strong>, si conseguimos ese horario. La visita al Coliseo de este tipo tiene una permanencia máxima de 90 min.</div></div>
+              <div class="item"><div class="time">10:45–13:15</div><div class="desc"><strong>Foro Romano + Palatino</strong>, incluidos en la misma Full Experience.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">13:30–14:45</div><div class="desc">Comida en <strong>Monti</strong>, uno de los barrios con más encanto de la zona.</div></div></div></div>
+            <div class="block"><div class="part">Tarde</div><div class="items">
+              <div class="item"><div class="time">15:00</div><div class="desc"><strong>Piazza del Campidoglio</strong> y vistas sobre el Foro desde la parte posterior.</div></div>
+              <div class="item"><div class="time">16:00</div><div class="desc"><strong>Vittoriano</strong> y sus terrazas.</div></div>
+              <div class="item"><div class="time">16:45</div><div class="desc">Plan romántico opcional: <strong>Giardino degli Aranci + cerradura del Aventino</strong> para cerrar el día con vistas de Roma.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Noche</div><div class="items"><div class="item"><div class="time">Libre</div><div class="desc">Cena en el centro. Sin despertador emocional.</div></div></div></div>
+          </div>
+          <div class="note">Importante: la Full Experience se pone a la venta online <strong>30 días antes</strong>. Conviene entrar en la web oficial el 9 de octubre y ser flexibles con el horario.</div>
+        </div>
+      </article>
+
+      <article class="day reveal">
+        <div class="date-badge"><div><b>09</b><span>lun</span></div></div>
+        <div class="card">
+          <div class="card-head"><div><h2>Vaticano + Trastevere</h2><div class="subtitle">Arte, ángeles y calles con luz dorada</div></div><div class="day-icon">🪽</div></div>
+          <div class="blocks">
+            <div class="block"><div class="part">Mañana</div><div class="items">
+              <div class="item"><div class="time">07:45</div><div class="desc">Salida hacia la <strong>Basílica de San Pedro</strong>. Ir temprano evita gran parte de la cola de seguridad.</div></div>
+              <div class="item"><div class="time">08:30–09:45</div><div class="desc"><strong>Basílica de San Pedro</strong> con calma. La entrada general es gratuita.</div></div>
+              <div class="item"><div class="time">09:45–10:40</div><div class="desc">Café y paseo hacia la entrada de los Museos Vaticanos.</div></div>
+              <div class="item"><div class="time">11:00–14:00</div><div class="desc"><strong>Museos Vaticanos + Capilla Sixtina</strong> — entradas ya reservadas.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">14:10–15:10</div><div class="desc">Comida por Prati o de camino a <strong>Castel Sant’Angelo</strong>.</div></div></div></div>
+            <div class="block"><div class="part">Tarde</div><div class="items">
+              <div class="item"><div class="time">15:20</div><div class="desc"><strong>Ponte Sant’Angelo</strong> y exterior del castillo. Entramos solo si nos apetece y queda energía.</div></div>
+              <div class="item"><div class="time">16:00</div><div class="desc">Paseo hacia el sur siguiendo el <strong>Tíber</strong>.</div></div>
+              <div class="item"><div class="time">16:40</div><div class="desc"><strong>Isola Tiberina</strong>, parada breve y cruce a Trastevere.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Noche</div><div class="items"><div class="item"><div class="time">Desde 17:00</div><div class="desc">Perdernos por <strong>Trastevere</strong>, aperitivo, cena y paseo de vuelta con Roma de noche.</div></div></div></div>
+          </div>
+          <div class="note">He movido San Pedro <strong>antes</strong> de los Museos Vaticanos. Hacerlo después de una entrada a las 11:00 suele dejar el día demasiado comprimido por la duración del museo y la cola de seguridad de la basílica.</div>
+        </div>
+      </article>
+
+      <article class="day reveal">
+        <div class="date-badge"><div><b>10</b><span>mar</span></div></div>
+        <div class="card">
+          <div class="card-head"><div><h2>Último día</h2><div class="subtitle">Una mañana bonita y despedida sin correr</div></div><div class="day-icon">🤍</div></div>
+          <div class="blocks">
+            <div class="block"><div class="part">Mañana</div><div class="items">
+              <div class="item"><div class="time">Opción A</div><div class="desc"><strong>Galleria Borghese + Villa Borghese</strong>. Merece mucho la pena, pero requiere reserva previa.</div></div>
+              <div class="item"><div class="time">Opción B</div><div class="desc">Plan lento: paseo por <strong>Villa Borghese</strong>, café, Piazza del Popolo y regreso por el centro.</div></div>
+              <div class="item"><div class="time">Opción C</div><div class="desc">Dormir un poco más y volver a <strong>Trevi</strong>, literalmente a dos pasos de casa romana.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">13:30</div><div class="desc">Comida tranquila cerca del hotel y recoger equipaje.</div></div></div></div>
+            <div class="block"><div class="part">Tarde</div><div class="items">
+              <div class="item"><div class="time">16:45–17:00</div><div class="desc">Salida hacia Fiumicino. Prefiero dejar <strong>algo más de margen</strong> que 17:30 para un vuelo internacional a las 20:10.</div></div>
+              <div class="item"><div class="time">20:10</div><div class="desc">Vuelo de vuelta a Madrid.</div></div>
+              <div class="item"><div class="time">22:45</div><div class="desc">Llegada. Fin del viaje; no de las escapadas.</div></div>
+            </div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <section class="romantic reveal">
+      <h2>Pequeñas cosas que harían el viaje todavía más nuestro</h2>
+      <p>Sin convertir el itinerario en una carrera, he añadido momentos que encajan muy bien por ubicación y por ambiente: Trevi temprano, Trevi de noche, el Aventino al atardecer y tiempo real para callejear por Trastevere.</p>
+      <div class="chips"><span class="chip">Trevi a primera hora</span><span class="chip">Aventino al atardecer</span><span class="chip">Ponte Sant’Angelo</span><span class="chip">Trastevere sin reloj</span><span class="chip">Café + paseo</span><span class="chip">Una foto juntos cada día</span></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="love">Roma, contigo.</div>
+    <small>María José & Néstor · noviembre 2026</small>
+  </footer>
+
+  <script>
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
