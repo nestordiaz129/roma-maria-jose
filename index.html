@@ -56,7 +56,7 @@
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.reveal.on{opacity:1;transform:none}
     @media (max-width:620px){
       .hero{padding:0;align-items:start}.hero-card{width:100vw;border-radius:0;box-shadow:none;aspect-ratio:1050/1536}.scroll-hint{bottom:10px}
-      main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}
+      main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}.time .time-end{display:block}.day:nth-child(3) .note{display:none}
       .card{padding:20px 16px;border-radius:16px}.block{grid-template-columns:1fr;gap:7px}.part{padding-top:0}.item{grid-template-columns:64px 1fr;gap:8px}.desc{font-size:15.7px}.romantic{padding:28px 22px;border-radius:20px}
     }
   </style>
@@ -190,6 +190,14 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.time').forEach(el=>{
+      const match=el.textContent.match(/^(.*?)[–-](.*)$/);
+      if(match)el.innerHTML=match[1]+'<span class="time-end">'+match[2]+'</span>';
+    });
+    document.querySelector('.day:nth-child(3) .note')?.remove();
+    const extras=document.querySelector('.romantic');
+    extras.querySelector('p').textContent='Porque todo viaje necesita una producción paralela, varias comprobaciones innecesarias y la posibilidad de que este plan sea sustituido por otro plan completamente distinto.';
+    extras.querySelector('.chips').innerHTML='<span class="chip">Que ella haga su propio plan y sustituya este por completo</span><span class="chip">Recordarme subir la maleta dos días antes para prepararla con tiempo</span><span class="chip">Revisar si el desayuno empieza demasiado tarde</span><span class="chip">Comprobar si el hotel tiene gimnasio para no usarlo</span><span class="chip">Acordarse de llevar las sandalias para andar</span><span class="chip">Investigar si hay otra actividad supernecesaria que reservar con dos meses de antelación</span><span class="chip">Ir poniendo cara de enfadada porque los vuelos están comprados con Trip.com</span><span class="chip">Una foto juntos cada día, por contrato</span>';
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
