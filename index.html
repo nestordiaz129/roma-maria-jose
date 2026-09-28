@@ -57,7 +57,7 @@
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.reveal.on{opacity:1;transform:none}
     @media (max-width:620px){
       .hero{padding:0;align-items:start}.hero-card{width:100vw;border-radius:0;box-shadow:none;aspect-ratio:1050/1536}.scroll-hint{bottom:10px}
-      main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}.time .time-end{display:block}.day:nth-child(3) .note{display:none}
+      main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}.day:nth-child(3) .note{display:none}
       .card{padding:20px 16px;border-radius:16px}.block{grid-template-columns:1fr;gap:7px}.part{padding-top:0}.item{grid-template-columns:64px 1fr;gap:8px}.desc{font-size:15.7px}.romantic{padding:28px 22px;border-radius:20px}
       .item{grid-template-columns:58px 1fr;gap:10px}
       /* Estilos para que la hora salga separada por guion en móvil */
@@ -198,9 +198,13 @@
   </footer>
 
   <script>
+    // JS mejorado para formatear las horas y el guion en móviles y PC
     document.querySelectorAll('.time').forEach(el=>{
-      const match=el.textContent.match(/^(.*?)[–-](.*)$/);
-      if(match)el.innerHTML=match[1]+'<span class="time-end">'+match[2]+'</span>';
+      const match = el.textContent.match(/^(.*?)\s*[–-]\s*(.*)$/);
+      if(match){
+         el.innerHTML = `<span class="t-start">${match[1]}</span><span class="time-sep">-</span><span class="t-end">${match[2]}</span>`;
+         el.classList.add('has-range');
+      }
     });
     document.querySelector('.day:nth-child(3) .note')?.remove();
     const extras=document.querySelector('.romantic');
