@@ -41,6 +41,7 @@
     .items{display:grid;gap:10px}
     .item{display:grid;grid-template-columns:72px 1fr;gap:11px;align-items:start}
     .time{font:700 13px/1.5 system-ui,sans-serif;color:#4f4842;white-space:nowrap}
+    .time-sep{display:inline;margin:0 4px;color:var(--wine)}
     .desc{font-size:17px;line-height:1.48}
     .desc strong{color:#2c2724}
     .note{margin-top:17px;padding:13px 15px;border-left:3px solid var(--gold);background:#f3e8da;border-radius:0 12px 12px 0;font:500 14px/1.55 system-ui,sans-serif;color:#554b42}
@@ -58,6 +59,13 @@
       .hero{padding:0;align-items:start}.hero-card{width:100vw;border-radius:0;box-shadow:none;aspect-ratio:1050/1536}.scroll-hint{bottom:10px}
       main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}.time .time-end{display:block}.day:nth-child(3) .note{display:none}
       .card{padding:20px 16px;border-radius:16px}.block{grid-template-columns:1fr;gap:7px}.part{padding-top:0}.item{grid-template-columns:64px 1fr;gap:8px}.desc{font-size:15.7px}.romantic{padding:28px 22px;border-radius:20px}
+      .item{grid-template-columns:58px 1fr;gap:10px}
+      /* Estilos para que la hora salga separada por guion en móvil */
+      .time.has-range{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:2px}
+      .t-start, .t-end{display:block;line-height:1}
+      .time-sep{display:block;margin:3px 0;line-height:1;font-size:14px}
+      
+      .desc{font-size:15.7px}.romantic{padding:28px 22px;border-radius:20px}
     }
   </style>
 </head>
@@ -98,8 +106,8 @@
             <div class="block"><div class="part">Mañana</div><div class="items">
               <div class="item"><div class="time">08:15</div><div class="desc"><strong>Fontana di Trevi a solas</strong>. Está al lado del hotel y a primera hora podemos disfrutarla sin gente.</div></div>
               <div class="item"><div class="time">09:45</div><div class="desc">Paseo hacia <strong>Piazza di Spagna</strong> (~10 min).</div></div>
-              <div class="item"><div class="time">10:00–12:00</div><div class="desc"><strong>Free Tour</strong>: Piazza di Spagna → Piazza Navona.</div></div>
-              <div class="item"><div class="time">12:30–13:00</div><div class="desc"><strong>Panteón</strong>. No suele haber mucha cola y la visita es rápida. La entrada son 7€ y podemos cogerla en el momento.</div></div>
+              <div class="item"><div class="time">10:00-12:00</div><div class="desc"><strong>Free Tour</strong>: Piazza di Spagna → Piazza Navona.</div></div>
+              <div class="item"><div class="time">12:30-13:00</div><div class="desc"><strong>Panteón</strong>. No suele haber mucha cola y la visita es rápida. La entrada son 7€ y podemos cogerla en el momento.</div></div>
             </div></div>
             <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">13:10–14:30</div><div class="desc">Comida por <strong>Navona / Panteón</strong> o acercándonos a Campo de’ Fiori.</div></div></div></div>
             <div class="block"><div class="part">Tarde</div><div class="items">
