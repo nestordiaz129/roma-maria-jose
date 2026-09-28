@@ -57,7 +57,7 @@
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.reveal.on{opacity:1;transform:none}
     @media (max-width:620px){
       .hero{padding:0;align-items:start}.hero-card{width:100vw;border-radius:0;box-shadow:none;aspect-ratio:1050/1536}.scroll-hint{bottom:10px}
-      main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}.day:nth-child(3) .note{display:none}
+      main{padding-inline:12px}.timeline::before{display:none}.day{grid-template-columns:1fr;gap:10px}.date-badge{width:46px;height:46px;justify-self:center}.date-badge b{font-size:16px}.date-badge span{font-size:7px}.time .time-end{display:block}.day:nth-child(3) .note{display:none}
       .card{padding:20px 16px;border-radius:16px}.block{grid-template-columns:1fr;gap:7px}.part{padding-top:0}.item{grid-template-columns:64px 1fr;gap:8px}.desc{font-size:15.7px}.romantic{padding:28px 22px;border-radius:20px}
       .item{grid-template-columns:58px 1fr;gap:10px}
       /* Estilos para que la hora salga separada por guion en móvil */
@@ -109,12 +109,23 @@
               <div class="item"><div class="time">10:00-12:00</div><div class="desc"><strong>Free Tour</strong>: Piazza di Spagna → Piazza Navona.</div></div>
               <div class="item"><div class="time">12:30-13:00</div><div class="desc"><strong>Panteón</strong>. No suele haber mucha cola y la visita es rápida. La entrada son 7€ y podemos cogerla en el momento.</div></div>
             </div></div>
-            <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">13:10–14:30</div><div class="desc">Comida por <strong>Navona / Panteón</strong> o acercándonos a Campo de’ Fiori.</div></div></div></div>
-            <div class="block"><div class="part">Tarde</div><div class="items">
-              <div class="item"><div class="time">15:00</div><div class="desc"><strong>Campo de’ Fiori</strong> y paseo por las callejuelas del centro.</div></div>
-              <div class="item"><div class="time">16:00</div><div class="desc">Regreso sin prisa por <strong>Via del Corso</strong>, tiendas y desvíos espontáneos.</div></div>
+            <div class="block"><div class="part">Mediodía</div><div class="items"><div class="item"><div class="time">13:30–15:00</div><div class="desc">Comida por <strong>Navona / Panteón</strong> o acercándonos a Campo de’ Fiori.</div></div></div></div>
+            <!-- Opción A: Barrio Judío -->
+            <div class="block"><div class="part">Tarde (A)</div><div class="items">
+              <div class="item"><div class="time">15:00</div><div class="desc"><strong>Campo de’ Fiori</strong>. (Por la tarde no hay mercado, pero las callejuelas anexas tienen mucho encanto).</div></div>
+              <div class="item"><div class="time">15:40</div><div class="desc"><strong>Largo di Torre Argentina</strong>. Las ruinas donde fue asesinado Julio César, hoy un santuario de gatos.</div></div>
+              <div class="item"><div class="time">16:15</div><div class="desc"><strong>Barrio Judío y Teatro di Marcello</strong>. Un paseo por la Fuente de las Tortugas y el Pórtico de Octavia. Parada obligatoria para un dulce.</div></div>
+              <div class="item"><div class="time">17:30</div><div class="desc">Regreso tranquilo hacia el hotel subiendo por Via del Corso.</div></div>
             </div></div>
-            <div class="block"><div class="part">Noche</div><div class="items"><div class="item"><div class="time">Libre</div><div class="desc">Cena cerca del hotel y <strong>Trevi iluminada</strong> antes de volver a la habitación.</div></div></div></div>
+            
+            <!-- Opción B: Atardecer Pincio -->
+            <div class="block"><div class="part">Tarde (B)</div><div class="items">
+              <div class="item"><div class="time">15:00</div><div class="desc"><strong>Campo de’ Fiori</strong> y desvíos por el centro.</div></div>
+              <div class="item"><div class="time">15:45</div><div class="desc">Paseo subiendo por <strong>Via del Corso</strong> (tiendas, ambiente y gelatos espontáneos).</div></div>
+              <div class="item"><div class="time">16:30</div><div class="desc"><strong>Piazza del Popolo</strong> y sus iglesias gemelas.</div></div>
+              <div class="item"><div class="time">16:50</div><div class="desc">Subida a la <strong>Terrazza del Pincio</strong>. Justo a tiempo para ver el atardecer sobre los tejados de Roma.</div></div>
+            </div></div>
+            <div class="block"><div class="part">Noche</div><div class="items"><div class="item"><div class="time">Libre</div><div class="desc">Cena cerca del hotel y <strong>ver la Fontana de Trevi iluminada</strong> antes de volver a la habitación.</div></div></div></div>
           </div>
         </div>
       </article>
@@ -198,13 +209,9 @@
   </footer>
 
   <script>
-    // JS mejorado para formatear las horas y el guion en móviles y PC
     document.querySelectorAll('.time').forEach(el=>{
-      const match = el.textContent.match(/^(.*?)\s*[–-]\s*(.*)$/);
-      if(match){
-         el.innerHTML = `<span class="t-start">${match[1]}</span><span class="time-sep">-</span><span class="t-end">${match[2]}</span>`;
-         el.classList.add('has-range');
-      }
+      const match=el.textContent.match(/^(.*?)[–-](.*)$/);
+      if(match)el.innerHTML=match[1]+'<span class="time-end">'+match[2]+'</span>';
     });
     document.querySelector('.day:nth-child(3) .note')?.remove();
     const extras=document.querySelector('.romantic');
