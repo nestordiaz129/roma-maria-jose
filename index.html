@@ -125,7 +125,11 @@
               <div class="item"><div class="time">16:30</div><div class="desc"><strong>Piazza del Popolo</strong> y sus iglesias gemelas.</div></div>
               <div class="item"><div class="time">16:50</div><div class="desc">Subida a la <strong>Terrazza del Pincio</strong>. Justo a tiempo para ver el atardecer sobre los tejados de Roma.</div></div>
             </div></div>
-            <div class="block"><div class="part">Noche</div><div class="items"><div class="item"><div class="time">Libre</div><div class="desc">Cena cerca del hotel y <strong>ver la Fontana de Trevi iluminada</strong> antes de volver a la habitación.</div></div></div></div>
+            <div class="block"><div class="part">Noche</div><div class="items">
+              <div class="item"><div class="time">17:30 - 19:30</div><div class="desc"><strong>Pit stop en el hotel</strong>. Volver a descansar, quitarnos los zapatos y ducharnos.</div></div>
+              <div class="item"><div class="time">19:45</div><div class="desc">Paseo de 5 min hasta <strong>Piazza di Pietra</strong>. Ver el Templo de Adriano iluminado. Ideal para tomar el primer aperitivo o vino.</div></div>
+              <div class="item"><div class="time">21:00</div><div class="desc"><strong>Cena</strong> por el centro. De vuelta, visita a la <strong>Fontana di Trevi iluminada</strong>.</div></div>
+            </div></div>
           </div>
         </div>
       </article>
@@ -211,7 +215,7 @@
 
   <footer>
     <div class="love">Roma.</div>
-    <small>María José & Néstor · noviembre 2026</small>
+    <small>Noviembre 2026</small>
   </footer>
 
   <script>
@@ -221,8 +225,8 @@
     });
     document.querySelector('.day:nth-child(3) .note')?.remove();
     const extras=document.querySelector('.romantic');
-    extras.querySelector('p').textContent='Porque todo viaje necesita una producción paralela, varias comprobaciones y la posibilidad de que este plan sea sustituido por otro plan completamente distinto.';
-    extras.querySelector('.chips').innerHTML='<span class="chip">Hacer un excel y sustituir este plan por completo</span><span class="chip">Subir mi maleta hoy mismo para ir con tiempo</span><span class="chip">Empezar a planificar el siguiente viaje</span><span class="chip">Preguntarme si he comprado los vuelos con la propia aerolinea y enfadarte</span><span class="chip">Una foto juntos cada día, por contrato</span>';
+    extras.querySelector('p').textContent='Porque todo viaje necesita una producción paralela, varias comprobaciones y un Excel.';
+    extras.querySelector('.chips').innerHTML='<span class="chip">Sustituir este plan por otro mejor que haga mi chica</span><span class="chip">No preguntarme si he comprado los vuelos con la aerolinea o con Trip</span><span class="chip">Empezar a planificar el siguiente viaje</span>';
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
